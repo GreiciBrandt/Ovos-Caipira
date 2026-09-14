@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import usePagamento from "../hooks/usePagamento";
 
 const pagamentoSchema = z.object({
-  titular: z
-    .string()
-    .min(1, "Informe o nome do titular do cartão."),
+  titular: z.string().min(1, "Informe o nome do titular do cartão."),
 
   cartao: z
     .string()
@@ -23,10 +21,7 @@ const pagamentoSchema = z.object({
 
   validade: z
     .string()
-    .regex(
-      /^(0[1-9]|1[0-2])\/\d{2}$/,
-      "Use o formato MM/AA."
-    ),
+    .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, "Use o formato MM/AA."),
 
   cvv: z
     .string()
@@ -35,7 +30,6 @@ const pagamentoSchema = z.object({
 
 function Pagamento() {
   const navigate = useNavigate();
-
   const { processando, processarPagamento } = usePagamento();
 
   const {
@@ -58,16 +52,11 @@ function Pagamento() {
     <main>
       <h1>Pagamento</h1>
 
-      <p>
-        Informe os dados do seu cartão para finalizar a compra.
-      </p>
+      <p>Informe os dados do seu cartão para finalizar a compra.</p>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor="titular">
-            Nome do titular
-          </label>
-
+          <label htmlFor="titular">Nome do titular</label>
           <input
             id="titular"
             type="text"
@@ -75,17 +64,11 @@ function Pagamento() {
             {...register("titular")}
             disabled={processando}
           />
-
-          {errors.titular && (
-            <p>{errors.titular.message}</p>
-          )}
+          {errors.titular && <p>{errors.titular.message}</p>}
         </div>
 
         <div>
-          <label htmlFor="cartao">
-            Número do cartão
-          </label>
-
+          <label htmlFor="cartao">Número do cartão</label>
           <input
             id="cartao"
             type="text"
@@ -94,17 +77,11 @@ function Pagamento() {
             {...register("cartao")}
             disabled={processando}
           />
-
-          {errors.cartao && (
-            <p>{errors.cartao.message}</p>
-          )}
+          {errors.cartao && <p>{errors.cartao.message}</p>}
         </div>
 
         <div>
-          <label htmlFor="validade">
-            Validade
-          </label>
-
+          <label htmlFor="validade">Validade</label>
           <input
             id="validade"
             type="text"
@@ -113,17 +90,11 @@ function Pagamento() {
             {...register("validade")}
             disabled={processando}
           />
-
-          {errors.validade && (
-            <p>{errors.validade.message}</p>
-          )}
+          {errors.validade && <p>{errors.validade.message}</p>}
         </div>
 
         <div>
-          <label htmlFor="cvv">
-            CVV
-          </label>
-
+          <label htmlFor="cvv">CVV</label>
           <input
             id="cvv"
             type="text"
@@ -132,19 +103,11 @@ function Pagamento() {
             {...register("cvv")}
             disabled={processando}
           />
-
-          {errors.cvv && (
-            <p>{errors.cvv.message}</p>
-          )}
+          {errors.cvv && <p>{errors.cvv.message}</p>}
         </div>
 
-        <button
-          type="submit"
-          disabled={processando}
-        >
-          {processando
-            ? "Processando compra…"
-            : "Pagar"}
+        <button type="submit" disabled={processando}>
+          {processando ? "Processando compra…" : "Pagar"}
         </button>
       </form>
 

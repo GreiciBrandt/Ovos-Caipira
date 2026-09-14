@@ -1,13 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 import ItemCarrinho from "../components/ItemCarrinho";
 import ResumoCompra from "../components/ResumoCompra";
 import { produtos } from "../data/produtos";
-import { useNavigate } from "react-router-dom";
 
 function Carrinho() {
   const navigate = useNavigate();
 
   const total = produtos.reduce(
-    (soma, produto) => soma + produto.preco * produto.quantidade,
+    (soma, produto) =>
+      soma + produto.preco * produto.quantidade,
     0
   );
 
