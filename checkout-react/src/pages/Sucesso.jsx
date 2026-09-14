@@ -7,9 +7,7 @@ function Sucesso() {
     <main>
       <h1>Compra aprovada!</h1>
 
-      <p>
-        Sua compra foi realizada com sucesso.
-      </p>
+      <p>Sua compra foi realizada com sucesso.</p>
 
       <button onClick={() => navigate("/")}>
         Voltar para o carrinho

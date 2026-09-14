@@ -3,7 +3,9 @@ function ResumoCompra({ total }) {
     <section>
       <h2>Resumo da compra</h2>
 
-      <p>Total: R$ {total.toFixed(2)}</p>
+      <p>
+        Total: R$ {total.toFixed(2)}
+      </p>
     </section>
   );
 }

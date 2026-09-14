@@ -36,10 +36,7 @@ const pagamentoSchema = z.object({
 function Pagamento() {
   const navigate = useNavigate();
 
-  const {
-    processando,
-    processarPagamento,
-  } = usePagamento();
+  const { processando, processarPagamento } = usePagamento();
 
   const {
     register,
@@ -66,7 +63,6 @@ function Pagamento() {
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-
         <div>
           <label htmlFor="titular">
             Nome do titular
@@ -146,9 +142,10 @@ function Pagamento() {
           type="submit"
           disabled={processando}
         >
-          {processando ? "Processando compra…" : "Pagar"}
+          {processando
+            ? "Processando compra…"
+            : "Pagar"}
         </button>
-
       </form>
 
       <button
